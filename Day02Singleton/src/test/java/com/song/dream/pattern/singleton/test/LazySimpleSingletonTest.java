@@ -1,6 +1,6 @@
 package com.song.dream.pattern.singleton.test;
 
-import com.song.dream.pattern.singleton.test.ExectorThread;
+
 
 /**
  * java.com.song.dream.pattern.singleton.test
