@@ -69,11 +69,9 @@ public class SongDispatcherServlet extends HttpServlet {
         Method method = this.handlerMapping.get(url);
         //通过反射拿到信息
         String beanName = toLowerFirstCase(method.getDeclaringClass().getSimpleName());
-        //为了投机取巧，写死
+        //为了方便这块写死，后期需要优化
         Map<String,String[]> paramMap = req.getParameterMap();
         method.invoke(ioc.get(beanName),new Object[]{req,resp,paramMap.get("name")[0]});
-
-
     }
 
 

@@ -23,10 +23,11 @@ public class DemoAction {
     private DemoService demoService;
 
     @SongRequestMapping("/test")
-    public void test(HttpServletRequest request, HttpServletResponse response, @SongRequestParam String name){
-        String result = "My name is " + name;
+    public void test(HttpServletRequest request, HttpServletResponse response, @SongRequestParam("name") String name){
+        String result = "My name is ";
         try{
-            response.getWriter().write(result);
+            String serviceResult = demoService.get(name);
+            response.getWriter().write(result + serviceResult);
         } catch (Exception e){
             e.printStackTrace();
         }
