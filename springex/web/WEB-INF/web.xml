@@ -7,7 +7,7 @@
     <display-name>SongSpringV1</display-name>
     <servlet>
         <servlet-name>SongServlet</servlet-name>
-        <servlet-class>com.song.springv1.servlet.SongDispatcherServletV1</servlet-class>
+        <servlet-class>com.song.springv1.servlet.SongDispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:songSpringMvc.properties</param-value>

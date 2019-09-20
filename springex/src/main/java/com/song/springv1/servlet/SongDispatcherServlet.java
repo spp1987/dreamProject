@@ -66,11 +66,12 @@ public class SongDispatcherServlet extends HttpServlet {
             resp.getWriter().write("404 not found!!!");
             return;
         }
+        Map<String,String[]> paramMap = req.getParameterMap();
         Method method = this.handlerMapping.get(url);
         //通过反射拿到信息
         String beanName = toLowerFirstCase(method.getDeclaringClass().getSimpleName());
         //为了方便这块写死，后期需要优化
-        Map<String,String[]> paramMap = req.getParameterMap();
+
         method.invoke(ioc.get(beanName),new Object[]{req,resp,paramMap.get("name")[0]});
     }
 
