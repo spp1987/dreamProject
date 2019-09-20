@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * com.song.ex.threadEx
- *
+ * 模拟各个线程竞争状态
  * @author by Song
  * @date 2019/9/20 17:42
  */
