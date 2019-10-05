@@ -15,8 +15,32 @@ public class ThreadDemo0922 {
 //        for (int i = 0; i < 10; i++) {
 //            threadWithin(i);
 //        }
+        for (int i = 0; i < 10; i++) {
+            threadInterrupted(i);
+        }
+        //System.err.println(main());
+    }
 
-        System.err.println(main());
+
+    static void threadInterrupted(int i){
+        ThreadLocal<Integer> currendLocal = new ThreadLocal<Integer>(){
+            @Override
+            protected Integer initialValue() {
+                return 1;
+            }
+        };
+        System.err.println("当前线程名："+Thread.currentThread().getName());
+        int currendNum = currendLocal.get();
+        while (!Thread.currentThread().isInterrupted()){
+            System.err.println(currendNum + ":threadWithin-线程运行");
+            currendNum++;
+            System.err.println(i+"---Thread.currentThread()--当前线程名："+Thread.currentThread().getName());
+            if(currendNum>3){
+                Thread.currentThread().interrupt();
+            }
+        }
+        Thread.currentThread().setName("main----测试----:"+i);
+        System.err.println("当前线程名："+Thread.currentThread().getName());
     }
 
     public static String main(){
@@ -62,4 +86,6 @@ public class ThreadDemo0922 {
         System.err.println(methodNum+":当前线程状态："+thread.getState());
         System.err.println(methodNum+":"+thread.isInterrupted());
     }
+
+
 }
